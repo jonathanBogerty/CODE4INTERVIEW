@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+    {% load static %} <!-- Instruct Django to load static files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}" />
+</head>
+
+<body>
+    <span class="message">{{ message }}</span>{{ content }}
+    <div><a href="about">About</a></div>
+    <a href="qr">
+        <button class="button qrbutton">QR Code generator</button>
+    </a>
+
+    {%  if user.is_authenticated %}
+    <p>You are logged in as {{ request.user }}. Click here to <a href="{% url 'logout' %}">log out</a></p>
+    {% endif %}
+
+    <div><a href="assets">Managing</a></div>
+
+</body>
+</html>
